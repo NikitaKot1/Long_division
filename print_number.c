@@ -66,7 +66,7 @@ int normalize(int cuorent[], int *power)
     }
     if (*power > 99999 || *power < -99999)
         return UNLIMITED_POWER;
-    int cuo_end = find_mass_end(cuorent, MANT_SIZE); 
+    int cuo_end = find_mass_end(cuorent, MANT_SIZE);
     if (cuo_end > 32)
     {
         cuo_end = 32;
@@ -75,12 +75,15 @@ int normalize(int cuorent[], int *power)
             int *sh = &(cuorent[cuo_end + 1]);
             shift_num(sh);
         }
+        cuo_end = 31;
     }
+    
     if (cuorent[cuo_end] > 4)
     {
         bool flag = true;
-        int i = cuo_end;
-        while (flag && i > 0)
+        cuorent[cuo_end - 1] = END_OF_MASS_INT;
+        int i = cuo_end - 2;
+        while (flag && i >= 0)
         {
             flag = false;
             cuorent[i] += 1;
