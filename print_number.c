@@ -80,6 +80,7 @@ int normalize(int cuorent[], int *power)
     
     if (cuorent[cuo_end] > 4)
     {
+        (*power)++;
         bool flag = true;
         cuorent[cuo_end - 1] = END_OF_MASS_INT;
         int i = cuo_end - 2;
@@ -92,6 +93,7 @@ int normalize(int cuorent[], int *power)
                     flag = true;
                     cuorent[i] -= 10;
                     i--;
+                    (*power)++;
                 }
         }
     }
